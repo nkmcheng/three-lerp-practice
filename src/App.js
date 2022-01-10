@@ -3,8 +3,9 @@ import "./App.scss";
 //Components
 import Header from "./components/header";
 import { Section } from "./components/section";
-import { Canvas, useFrame } from "@react-three/fiber";
 
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useSpring, animated } from "@react-spring/web";
 import { Html, useGLTF, useAnimations } from "@react-three/drei";
 
 // page states
@@ -20,7 +21,7 @@ const Model = ({ modelPath }) => {
   const animate = useAnimations(gltf.animations, gltf.scene);
   useEffect(() => {
     const actionName = animate.names[0];
-    console.log("gltf animations", animate.actions[actionName]);
+    // console.log("gltf animations", animate.actions[actionName]);
     // actions?.jump.play()
     // if (actions["mixamo.com"]) {
     //   actions["mixamo.com"].play();
@@ -53,7 +54,21 @@ const HtmlContent = ({
 }) => {
   const ref = useRef();
 
-  useFrame(() => (ref.current.rotation.y += 0.01));
+  const calc = (x, y) => [
+    -(y - window.innerHeight / 2) / 20,
+    (x - window.innerWidth / 2) / 20,
+    1.1,
+  ];
+  const trans = (x, y, s) =>
+    `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+
+  const [props, set] = useSpring(() => ({
+    xys: [0, 0, 1],
+    config: { mass: 5, tension: 350, friction: 40 },
+  }));
+
+  // useFrame(() => (ref.current.rotation.y += 0.01));
+
   const [refItem, inView] = useInView({
     threshold: 0,
   });
@@ -69,9 +84,17 @@ const HtmlContent = ({
           <Model modelPath={modelPath} />
         </mesh>
         <Html portal={domContent} fullscreen>
-          <div className="container" ref={refItem}>
+          <animated.div
+            className="container"
+            ref={refItem}
+            onMouseMove={({ clientX: x, clientY: y }) =>
+              set({ xys: calc(x, 0) })
+            }
+            onMouseLeave={() => set({ xys: [0, 0, 1] })}
+            style={{ transform: props.xys.to(trans) }}
+          >
             {children}
-          </div>
+          </animated.div>
         </Html>
       </group>
     </Section>

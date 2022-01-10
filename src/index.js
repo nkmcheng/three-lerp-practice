@@ -1,14 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+import Spring from "./spring.js";
+import SpringTwo from "./spring2.js";
+import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Router>
+    <Routes>
+      <Route path="/spring" element={<Spring />} />
+      <Route path="/spring-2" element={<SpringTwo />} />
+      <Route path="/" element={<App />} />
+    </Routes>
+  </Router>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

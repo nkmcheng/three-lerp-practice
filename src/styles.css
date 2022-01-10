@@ -1,0 +1,144 @@
+
+.main {
+    width: 100%;
+    height: 100%;
+    background: #1b1f21;
+    color: white;
+    overflow: hidden;
+}
+  
+.main > div {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.code {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+  }
+  
+  .code-container {
+    position: absolute;
+    border-radius: 8px;
+    background-color: #272822;
+    max-width: 600px;
+    padding: 8px 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.ground {
+    background-image: url("./images/ground.png");
+    z-index: 2;
+}
+
+
+.clouds {
+    background-image: url('./images/cloud-ring.webp');
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.clouds-left {
+    background-image: url('./images/cloud-left.webp');
+    left: -42%;
+    top: -30%;
+    background-size: 400px !important;
+    z-index: 1;
+}
+
+.clouds-right {
+    background-image: url('./images/cloud-right.webp');
+    right: -42%;
+    top: -30%;
+    background-size: 400px !important;
+    z-index: 1;
+}
+
+.chibi1 {
+    background-image: url('./images/chibi1.png');
+    left: -39%;
+    top: -30%;
+    transform: rotateZ(-25deg);
+    background-size: 200px !important;
+    z-index: 3;
+}
+
+.chibi3 {
+    background-image: url('./images/chibi3.png');
+    right: -39%;
+    bottom: -20%;
+    background-size: 300px !important;
+    z-index: 3;
+}
+
+.chibi4 {
+    background-image: url('./images/chibi4.png');
+    right: -10%;
+    top: -20%;
+    transform: rotateZ(15deg);
+    background-size: 250px !important;
+    z-index: 3;
+}
+
+.chibi5 {
+    background-image: url('./images/chibi7.png');
+    left: -40%;
+    bottom: -3.2%;
+    background-size: 400px !important;
+    z-index: 1;
+}
+.chibi6 {
+    background-image: url('./images/chibi6.png');
+    right: 0%;
+    bottom: -20%;
+    background-size: 300px !important;
+    z-index: 1;
+}
+
+@media only screen and (max-width: 1000px) {
+    .chibi1 {
+        left: -39%;
+        top: -30%;
+        background-size: 150px !important;
+    }
+    
+    .chibi3 {
+        right: -39%;
+        bottom: -20%;
+        background-size: 250px !important;
+    }
+    
+    .chibi4 {
+        right: -10%;
+        top: -20%;
+        background-size: 200px !important;
+    }
+    
+    .chibi5 {
+        left: -37%;
+        bottom: -7%;
+        background-size: 350px !important;
+    }
+    .chibi6 {
+        right: 0%;
+        bottom: -20%;
+        background-size: 250px !important;
+    }
+    .code h1 {
+        font-size: 1.3em;
+      }
+      .code p {
+        font-size: 0.8em;
+      }
+  }
+  
