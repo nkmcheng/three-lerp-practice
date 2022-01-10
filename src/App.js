@@ -53,14 +53,14 @@ const HtmlContent = ({
 }) => {
   const ref = useRef();
 
-  // useFrame(() => (ref.current.rotation.y += 0.01));
+  useFrame(() => (ref.current.rotation.y += 0.01));
   const [refItem, inView] = useInView({
     threshold: 0,
   });
 
   useEffect(() => {
     inView && (document.body.style.background = bgColor);
-  }, [inView]);
+  }, [inView, bgColor]);
 
   return (
     <Section factor={1.5} offset={1}>
