@@ -67,7 +67,7 @@ const HtmlContent = ({
     config: { mass: 5, tension: 350, friction: 40 },
   }));
 
-  // useFrame(() => (ref.current.rotation.y += 0.01));
+  useFrame(() => (ref.current.rotation.y += 0.01));
 
   const [refItem, inView] = useInView({
     threshold: 0,
